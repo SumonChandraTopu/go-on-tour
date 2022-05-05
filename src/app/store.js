@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { hotelsApi } from "../services/hotelsApi";
+import { locationsApi } from "../services/travelApi";
 
 export const store = configureStore({
   reducer: {
-    [hotelsApi.reducerPath]: hotelsApi.reducer,
+    [locationsApi.reducerPath]: locationsApi.reducer,
   },
 });

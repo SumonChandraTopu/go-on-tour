@@ -5,11 +5,11 @@ const hotelsApiHeaders = {
 };
 const baseUrl = "https://travel-advisor.p.rapidapi.com";
 const createRequest = (url) => ({ url, headers: hotelsApiHeaders });
-export const hotelsApi = createApi({
-  reducerPath: "hotelsApi",
+export const locationsApi = createApi({
+  reducerPath: "locationsApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getHotels: builder.query({
+    getLocations: builder.query({
       query: (title) => createRequest(`/locations/search?query=${title}`),
     }),
     getRestaurants: builder.query({
@@ -19,4 +19,4 @@ export const hotelsApi = createApi({
   }),
 });
 
-export const { useGetHotelsQuery, useGetRestaurantsQuery } = hotelsApi;
+export const { useGetLocationsQuery, useGetRestaurantsQuery } = locationsApi;

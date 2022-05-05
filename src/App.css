@@ -1,1 +1,20 @@
+.location-id {
+  font-size: 0.8rem;
+}
+.location-id span {
+  color: red;
+  font-weight: bold;
+}
+.card-img {
+  height: 200px !important;
+}
 
+.logo-url {
+  width: 200px;
+}
+
+/* @media only screen and (max-width: 1000px) {
+} */
+.nav-container {
+  background-color: #fafafa64 !important;
+}
