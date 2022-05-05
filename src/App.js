@@ -4,6 +4,9 @@ import Home from "./components/Home";
 import Locations from "./components/Locations";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import Restaurants from "./components/Restaurants";
+import Hotels from "./components/Hotels";
+import RestaurantDetails from "./components/RestaurantDetails";
 
 const App = () => {
   return (
@@ -13,6 +16,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/locations" element={<Locations simplified />} />
+          <Route path="/restaurants" element={<Restaurants simplified />} />
+          <Route
+            path="/restaurant/location/:locationId"
+            element={<RestaurantDetails />}
+          />
+          <Route path="/hotels" element={<Hotels simplified />} />
         </Routes>
       </BrowserRouter>
     </div>

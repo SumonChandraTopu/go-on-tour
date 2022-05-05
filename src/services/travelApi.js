@@ -16,7 +16,15 @@ export const locationsApi = createApi({
       query: (locationId) =>
         createRequest(`/restaurants/list?location_id=${locationId}`),
     }),
+    getRestaurantsDetails: builder.query({
+      query: (locationId) =>
+        createRequest(`/restaurants/get-details?location_id=${locationId}`),
+    }),
   }),
 });
 
-export const { useGetLocationsQuery, useGetRestaurantsQuery } = locationsApi;
+export const {
+  useGetLocationsQuery,
+  useGetRestaurantsQuery,
+  useGetRestaurantsDetailsQuery,
+} = locationsApi;

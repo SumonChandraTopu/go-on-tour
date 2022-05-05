@@ -1,9 +1,9 @@
 import React from "react";
 
 const Location = ({ location, locationsData }) => {
-  console.log("====================================");
-  console.log(location);
-  console.log("====================================");
+  // console.log("====================================");
+  // console.log(location);
+  // console.log("====================================");
   const { result_object: result } = location;
   return (
     <div className="hotel-container col">
