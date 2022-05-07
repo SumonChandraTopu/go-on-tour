@@ -23,8 +23,7 @@
 
 .meal-detail {
   list-style: none;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .restaurant-card {
   transition: 0.5s;
@@ -53,6 +52,10 @@
   .review-slider > p {
     font-size: 0.9rem;
   }
+  .slider-publish-day {
+    font-size: 0.8rem;
+    padding: 0 !important;
+  }
 }
 
 /* ========== Restaurant ratings =============== */
@@ -60,14 +63,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
+  width: 300px;
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
 }
 .stars p {
   color: #ffb200;
-  font-size: 1.3rem;
   line-height: 1rem;
 }
 .star-count p {
@@ -102,6 +104,19 @@
     width: 100%;
     height: 300px;
   }
+
+  .email,
+  .website,
+  .phone,
+  .write-review {
+    font-size: 1rem !important;
+  }
+  .rating {
+    width: 100%;
+  }
+  .ratings-container {
+    margin: 0 auto;
+  }
 }
 @media only screen and (max-width: 668px) {
   .i-frame {
@@ -131,6 +146,13 @@
   padding: 1rem;
   border-radius: 10px;
 }
+/* ====================== */
+.rating-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1024px) {
   .reason {
     flex-direction: column;
@@ -157,5 +179,8 @@
   }
   .review-text {
     font-weight: normal;
+  }
+  .rating-contact {
+    flex-direction: column;
   }
 }

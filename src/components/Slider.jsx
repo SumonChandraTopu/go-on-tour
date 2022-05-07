@@ -52,7 +52,9 @@ const Slider = ({ restaurant }) => {
               >
                 Details
               </a>
-              <p className="pt-3">Published Day: {review?.published_date}</p>
+              <p className="pt-3 slider-publish-day">
+                Published Day: {review?.published_date}
+              </p>
             </div>
           </div>
         </SwiperSlide>

@@ -16,12 +16,12 @@ const RestaurantDetails = () => {
   const { locationId } = useParams();
   const { data: restaurant } = useGetRestaurantsDetailsQuery(locationId);
   return (
-    <div className="container">
+    <div className="container pt-3">
       <div className="restaurant-container">
         {/* ============= Head ============= */}
         <div className="head">
           <div className="restaurant-title">
-            <h2>
+            <h2 className="fs-1">
               {restaurant?.name}
               <span className="fs-6 px-3 text-info">
                 ( {restaurant?.open_now_text} )
@@ -38,15 +38,17 @@ const RestaurantDetails = () => {
         </div>
         {/* =============== Body ============= */}
         <div className="restaurant-body pt-5">
-          <p className="py-2">{restaurant?.description}</p>
-          <p>Location: {restaurant?.address}</p>
-          <p>
-            Ranking position:
-            <span className="text-info fw-bold"> {restaurant?.ranking}</span>
+          <p className="py-2 fs-5">{restaurant?.description}</p>
+          <p className="fs-5 fw-bold">
+            Location: <span className="fw-normal"> {restaurant?.address}</span>
           </p>
-          <p>
+          <p className="fs-5 fw-bold">
+            Ranking position:
+            <span className="text-info"> {restaurant?.ranking}</span>
+          </p>
+          <p className="fs-5 fw-bold">
             Price:
-            <span className="fw-bold text-info"> {restaurant?.price}</span>
+            <span className=" text-info"> {restaurant?.price}</span>
           </p>
           <div className="meal-details">
             <div className="meal-type">
@@ -100,7 +102,9 @@ const RestaurantDetails = () => {
         {/* ============ Top Reasons =========== */}
         {restaurant?.owners_top_reasons && (
           <div className="top-reasons">
-            <h6>{restaurant?.owners_top_reasons?.section_header}</h6>
+            <h6 className="fs-5 fw-bold">
+              {restaurant?.owners_top_reasons?.section_header}
+            </h6>
             <p>
               <i>{restaurant?.owners_top_reasons?.sponsored_by}</i>
             </p>
@@ -108,7 +112,7 @@ const RestaurantDetails = () => {
               <div className="reason" key={reason?.review?.review_id}>
                 <ul className="reason-ul">
                   <li>
-                    <span className="py-3">
+                    <span className="py-3 fs-5">
                       <MdCheck /> {reason?.header}
                     </span>
                     <span className="fs-6 ms-5 review-id">
@@ -125,7 +129,7 @@ const RestaurantDetails = () => {
 
         {/* ============ Awards ============ */}
         <div>
-          <p className="my-3">Awards: </p>
+          <p className="my-3 fs-5 fw-bold">Awards: </p>
           <p className=" awards row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1  g-3  ">
             {restaurant?.awards.map((award) => (
               <div className="col" key={award?.name}>
@@ -148,61 +152,70 @@ const RestaurantDetails = () => {
         </div>
         {/* =========== Reviews ( Slider ) ============ */}
         <div className="reviews">
-          <p>Reviews: </p>
+          <p className="fs-5 fw-bold">Reviews: </p>
           <Slider restaurant={restaurant} />
         </div>
-        {/* ============ Ratings ============== */}
-        <div className="rating py-3">
-          <p>Ratings: </p>
-          <div className="ratings-container">
-            <div className="stars">
-              <p>
-                <HiStar />
-              </p>
-              <p>
-                <HiStar /> <HiStar />
-              </p>
-              <p>
-                <HiStar /> <HiStar /> <HiStar />
-              </p>
-              <p>
-                <HiStar /> <HiStar /> <HiStar /> <HiStar />
-              </p>
-              <p>
-                <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
-              </p>
-            </div>
-            <div className="star-count">
-              <p>{restaurant?.rating_histogram?.count_1}</p>
-              <p>{restaurant?.rating_histogram?.count_2}</p>
-              <p>{restaurant?.rating_histogram?.count_3}</p>
-              <p>{restaurant?.rating_histogram?.count_4}</p>
-              <p>{restaurant?.rating_histogram?.count_5}</p>
+        <div className="rating-contact py-2">
+          {/* ============ Ratings ============== */}
+          <div className="rating py-3">
+            <p className="fs-5 fw-bold">Ratings: </p>
+            <div className="ratings-container">
+              <div className="stars">
+                <p className="fs-5">
+                  <HiStar />
+                </p>
+                <p className="fs-5">
+                  <HiStar /> <HiStar />
+                </p>
+                <p className="fs-5">
+                  <HiStar /> <HiStar /> <HiStar />
+                </p>
+                <p className="fs-5">
+                  <HiStar /> <HiStar /> <HiStar /> <HiStar />
+                </p>
+                <p className="fs-5">
+                  <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
+                </p>
+              </div>
+              <div className="star-count">
+                <p className="fs-5">{restaurant?.rating_histogram?.count_1}</p>
+                <p className="fs-5">{restaurant?.rating_histogram?.count_2}</p>
+                <p className="fs-5">{restaurant?.rating_histogram?.count_3}</p>
+                <p className="fs-5">{restaurant?.rating_histogram?.count_4}</p>
+                <p className="fs-5">{restaurant?.rating_histogram?.count_5}</p>
+              </div>
             </div>
           </div>
-        </div>
-        {/* ========== Contact Info ============ */}
-        <div className="contact-info">
-          <p className="phone">
-            <FiPhone /> <span>{restaurant?.phone}</span>
-          </p>
-          <p className="email">
-            <HiOutlineMail /> <span>{restaurant?.email}</span>
-          </p>
+          {/* ========== Contact Info ============ */}
+          <div className="contact-info">
+            <p className="fs-5 fw-bold">Contact information: </p>
+            <p className="phone fs-5">
+              <span>
+                <FiPhone /> {restaurant?.phone}
+              </span>
+            </p>
+            <p className="email fs-5">
+              <span>
+                <HiOutlineMail /> {restaurant?.email}
+              </span>
+            </p>
 
-          <p className="website">
-            <ImEarth /> <span>{restaurant?.website}</span>
-          </p>
-          <p className="write-review">
-            <MdRateReview />
-            <a
-              href={restaurant?.write_review}
-              target="_blank"
-              className="text-info fw-bold"
-            >
-              Write a review.
-            </a>
-          </p>
+            <p className="website fs-5">
+              <span>
+                <ImEarth /> {restaurant?.website}
+              </span>
+            </p>
+            <p className="write-review fs-5">
+              <MdRateReview />
+              <a
+                href={restaurant?.write_review}
+                target="_blank"
+                className="text-info fw-bold"
+              >
+                Write a review.
+              </a>{" "}
+            </p>
+          </div>
         </div>
       </div>
     </div>
