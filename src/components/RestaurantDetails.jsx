@@ -10,6 +10,7 @@ import { HiStar } from "react-icons/hi";
 import { MdCheck } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { BiFoodMenu } from "react-icons/bi";
+import bookingImg from "../images/booking.png";
 import Iframe from "react-iframe";
 
 const RestaurantDetails = () => {
@@ -93,40 +94,45 @@ const RestaurantDetails = () => {
             </div>
           </div>
         </div>
-        {/* ============= Iframe ============= */}
-        {restaurant?.storyboard && (
-          <div className="story-board">
-            <Iframe url={restaurant?.storyboard?.hd_720p} className="i-frame" />
-          </div>
-        )}
-        {/* ============ Top Reasons =========== */}
-        {restaurant?.owners_top_reasons && (
-          <div className="top-reasons">
-            <h6 className="fs-5 fw-bold">
-              {restaurant?.owners_top_reasons?.section_header}
-            </h6>
-            <p>
-              <i>{restaurant?.owners_top_reasons?.sponsored_by}</i>
-            </p>
-            {restaurant?.owners_top_reasons?.top_reasons.map((reason) => (
-              <div className="reason" key={reason?.review?.review_id}>
-                <ul className="reason-ul">
-                  <li>
-                    <span className="py-3 fs-5">
-                      <MdCheck /> {reason?.header}
-                    </span>
-                    <span className="fs-6 ms-5 review-id">
-                      <CgProfile /> {reason?.review?.screen_name}
-                    </span>
-                    <p className="fs-6 review-text">{reason?.text}</p>
-                  </li>
-                </ul>
-                <img src={reason?.image_url} className="reason-image" alt="" />
-              </div>
-            ))}
-          </div>
-        )}
-
+        <div className="iframe-reasons">
+          {/* ============ Top Reasons =========== */}
+          {restaurant?.owners_top_reasons && (
+            <div className="top-reasons">
+              <h6 className="fs-5 fw-bold">
+                {restaurant?.owners_top_reasons?.section_header}
+              </h6>
+              <p>
+                <i>{restaurant?.owners_top_reasons?.sponsored_by}</i>
+              </p>
+              {restaurant?.owners_top_reasons?.top_reasons.map((reason) => (
+                <div className="reason" key={reason?.review?.review_id}>
+                  <ul className="reason-ul">
+                    <li>
+                      <div className="top-reason-container px-2 my-1">
+                        <span className=" fs-4">
+                          <MdCheck /> {reason?.header}
+                        </span>
+                        <span className="fs-6 review-id">
+                          <CgProfile /> {reason?.review?.screen_name}
+                        </span>
+                      </div>
+                      <p className="fs-5 review-text">{reason?.text}</p>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+          {/* ============= Iframe ============= */}
+          {restaurant?.storyboard && (
+            <div className="story-board">
+              <Iframe
+                url={restaurant?.storyboard?.hd_720p}
+                className="i-frame"
+              />
+            </div>
+          )}
+        </div>
         {/* ============ Awards ============ */}
         <div>
           <p className="my-3 fs-5 fw-bold">Awards: </p>
@@ -202,7 +208,15 @@ const RestaurantDetails = () => {
 
             <p className="website fs-5">
               <span>
-                <ImEarth /> {restaurant?.website}
+                <ImEarth />{" "}
+                <a
+                  href={restaurant?.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none text-dark"
+                >
+                  {restaurant?.website}
+                </a>
               </span>
             </p>
             <p className="write-review fs-5">
@@ -212,11 +226,25 @@ const RestaurantDetails = () => {
                 target="_blank"
                 className="text-info fw-bold"
               >
+                {" "}
                 Write a review.
-              </a>{" "}
+              </a>
             </p>
           </div>
         </div>
+        {/* ====================  Booking  ===================== */}
+        {restaurant?.booking && (
+          <a
+            href={restaurant?.booking?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="booking-container"
+          >
+            <div className="booking">
+              <img src={bookingImg} className="img-fluid" alt="" />
+            </div>
+          </a>
+        )}
       </div>
     </div>
   );
